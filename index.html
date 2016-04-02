@@ -89,11 +89,13 @@
   var __chat = document.getElementById("chat");
   var __ut = document.getElementById("user_txt");
 
-  send_msg.onclick = function(){
+  var __sendFunction = function(){
   	var __m = document.createElement("li");
   	__m.innerHTML = __ut.value;
   	__chat.appendChild(__m);
   };
+
+  send_msg.onclick = __sendFunction;
 
 
   </script>
