@@ -7,9 +7,20 @@
   <style>
 
   .main {
-  	width:100vh;
-  	height:100vh;
+  	position:fixed;
+  	width:100%;
+  	height:100%;
+  	left:0;
+  	top:0;
   	background-color:#BCED91;
+  }
+
+  .chat{
+  	width:100%;
+  }
+
+  .chat_interface{
+  	display:inline-block;
   }
 
 
@@ -20,7 +31,10 @@
   <div class="main">
   	<ul class="chat">
   	</ul>
-  	<input type="text" name="user_input">
+  	<div class="chat_interface">
+	  	<input type="text" name="user_input">
+	  	<button type="button">Send</button>
+  	</div>
   </div>
 
   </body>
