@@ -15,8 +15,14 @@
   	background-color:#BCED91;
   }
 
-  .chat{
-  	width:100%;
+   #chat{
+  	width:182px;
+  	height:400px;
+  	background-color: #ffffff;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	display:block;
+    overflow: auto;
   }
 
   .chat_interface{
@@ -46,17 +52,23 @@
 	border: 1px solid #ddd;
   }
 
+
   </style>
 
   <body>
 
   <div class="main">
-  	<ul class="chat">
-  	</ul>
-  	<div class="chat_interface">
-	  	<input type="text" name="user_input">
-	  	<button type="button">Send</button>
+
+  	<div class="__c">
+	  	<ul id="chat">
+	  	</ul>
   	</div>
+
+  	<div class="chat_interface">
+	  	<input type="text" name="user_input" id="user_txt">
+	  	<button id="send_msg" type="button">Send</button>
+  	</div>
+
   	<div class="msg_type_selector">
   		<ul>
   			<li> <a href="#">Say</a> </li>
@@ -64,13 +76,22 @@
   			<li> <a href="#">Broadcast</a>  </li>
   		</ul>
   	</div>
+
   </div>
 
   </body>
 
   <script>
 
+  var send_msg = document.getElementById("send_msg");
+  var __chat = document.getElementById("chat");
+  var __ut = document.getElementById("user_txt");
 
+  send_msg.onclick = function(){
+  	var __m = document.createElement("li");
+  	__m.innerHTML = __ut.value;
+  	__chat.appendChild(__m);
+  };
 
 
   </script>
