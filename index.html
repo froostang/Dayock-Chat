@@ -17,7 +17,7 @@
   }
 
    #chat{
-   	height:200px;
+   	height:520px;
   	background-color: #ffffff;
 	opacity:0.6;
 	filter:alpha(opacity=60);
@@ -99,10 +99,17 @@
 	  var __sendFunction = function(){
 	  	var __m = document.createElement("li");
 	  	__m.innerHTML = __ut.value;
+	  	__m.innerHTML = "";
 	  	__chat.appendChild(__m);
-	  	socket.emit('chat message', __ut.value);
+	  	socket.emit('chat message', { "TEXT": __ut.value } );
 	  	return false;
 	  };
+
+	  $("#__ut").keyup(function(event){
+	  	if(event.keyCode==13){
+	  		__sendFunction();
+	  	}
+	  })
 
 	  send_msg.onclick = __sendFunction;
   </script>
