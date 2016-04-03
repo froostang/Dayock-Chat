@@ -38,17 +38,18 @@
   }
 
   #user_txt{
-    font-size: 32px;
+    font-size: 24px;
     color: #555;
     float:left;
     border-radius: 2px;
     border: solid #d2b48c;
     width:78%;
+    height:42px;
   }
   #send_msg{
     width:21%;
     float:right;
-    height:54px;
+    height:42px;
     border-radius: 2px;
     border: solid #d2b48c;
     background-color:white;
@@ -71,7 +72,7 @@
     display:inline;
     float:left;
     height:46px;
-    font:24px;
+    font-size:24px;
   }
   .msg_type_selector ul>li>a{
     position: relative;
@@ -147,7 +148,9 @@
 
 	  $("#user_txt").keyup(function(event){
 	  	if(event.keyCode==13){
+	  		if(__ut.value){
 	  		__sendFunction();
+	  		}
 	  	}
 	  })
 
