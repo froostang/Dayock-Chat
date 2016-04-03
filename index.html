@@ -200,7 +200,7 @@
     var __sendFunction = function(msg){
       var __m = document.createElement("li");
 
-      if(!msg){
+      if(msg==null){
         if (saycolor == 1){
           __m.style.color = "magenta";
         }
@@ -214,7 +214,7 @@
 
       __m.innerHTML = __ut.value;
 
-      if(msg){
+      if(msg!=null){
         $("#chat").prepend(msg);
       } else{
         $("#chat").prepend(__m);
