@@ -96,16 +96,20 @@
 	  var __chat = document.getElementById("chat");
 	  var __ut = document.getElementById("user_txt");
 
+	  var clearInput = function(){
+	  	__ut.value = "";
+	  };
+
 	  var __sendFunction = function(){
 	  	var __m = document.createElement("li");
 	  	__m.innerHTML = __ut.value;
-	  	__m.innerHTML = "";
 	  	__chat.appendChild(__m);
 	  	socket.emit('chat message', { "TEXT": __ut.value } );
+	  	clearInput();
 	  	return false;
 	  };
 
-	  $("#__ut").keyup(function(event){
+	  $("#user_txt").keyup(function(event){
 	  	if(event.keyCode==13){
 	  		__sendFunction();
 	  	}
