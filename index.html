@@ -93,8 +93,14 @@
 	margin-right:6px;
 	color:white;
   }
-  .msg_type_selector ul>li>a:hover{
-    background-color:#d2b48c;
+  .msg_type_selector ul>li:hover:first-child a{
+    background-color:green;
+  }
+  .msg_type_selector ul>li:first-child + li:hover a{
+    background-color:red;
+  }
+  .msg_type_selector ul>li:hover:last-child a{
+    background-color:blue;
   }
   </style>
   <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
