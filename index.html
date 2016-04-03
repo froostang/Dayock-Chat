@@ -6,22 +6,20 @@
   </head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <style>
-
   .main {
-  	position:fixed;
-  	width:100%;
-  	height:100%;
-  	left:0;
-  	top:0;
-  	background-color:#BCED91;
+    position:fixed;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    background: linear-gradient(gray, black);
   }
-
    #chat{
-   	height:520px;
-  	background-color: #ffffff;
-	opacity:0.6;
-	filter:alpha(opacity=60);
-	display:block;
+    height:520px;
+    background-color: #ffffff;
+  opacity:0.6;
+  filter:alpha(opacity=60);
+  display:block;
     overflow: auto;
     list-style:none;
     padding-left:0px;
@@ -39,63 +37,56 @@
   }
 
   #user_txt{
-  	font-size: 32px;
+    font-size: 32px;
     color: #555;
     float:left;
     border-radius: 2px;
     border: solid #d2b48c;
     width:78%;
   }
-
   #send_msg{
-  	width:22%;
-  	height:54px;
-  	border-radius: 2px;
+    width:22%;
+    height:54px;
+    border-radius: 2px;
     border: solid #d2b48c;
     background-color:white;
   }
   #send_msg:hover{
-  	background-color:#d2b48c;
+    background-color:#d2b48c;
   }
-
   .chat_interface{
-  	display:inline-block;
-  	width:100%;
+    display:inline-block;
+    width:100%;
   }
-
   .msg_type_selector ul{
-  	display:inline-block;
-  	padding-left: 0;
+    display:inline-block;
+    padding-left: 0;
     margin: 20px 0;
     border-radius: 4px;
     width:100%;
   }
-
   .msg_type_selector ul>li{
-  	display:inline;
+    display:inline;
     float:left;
     height:46px;
     font:24px;
   }
-
   .msg_type_selector ul>li>a{
-	position: relative;
+  position: relative;
     border-radius: 2px;
-	left:0px;
+  left:0px;
     top: 20px;
-	padding: 6px 12px;
-	margin-left: -1px;
-	line-height: 1;
-	text-decoration: none;
-	background-color: #fff;
-	border: 2px solid #d2b48c;
-	font-size:32px;
-	}
-	.msg_type_selector ul>li>a:hover{
-		background-color:#d2b48c;
-	}
-
-
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1;
+  text-decoration: none;
+  background-color: #fff;
+  border: 2px solid #d2b48c;
+  font-size:32px;
+  }
+  .msg_type_selector ul>li>a:hover{
+    background-color:#d2b48c;
+  }
   </style>
   <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -105,28 +96,28 @@
 
   <div class="main">
 
-  	<div class="container text-center">
+    <div class="container text-center">
       
-	      <div class="msg_type_selector">
-	        <ul>
-	          <li><a href="#">Say</a></li>
-	          <li><a href="#">Yell</a></li>
-	          <li><a href="#">Broadcast</a></li>
-	        </ul>
-	      </div>
+        <div class="msg_type_selector">
+          <ul>
+            <li> <a href="#">Say</a> </li>
+            <li> <a href="#">Yell</a>  </li>
+            <li> <a href="#">Broadcast</a>  </li>
+          </ul>
+        </div>
 
-	  	<div class="__c">
-		  	<ul id="chat">
-		  	</ul>
-	  	</div>
+      <div class="__c">
+        <ul id="chat">
+        </ul>
+      </div>
 
-	    <div class="chat_interface">
-		  	<input type="text" name="user_input" id="user_txt">
-		  	<button id="send_msg" type="button">Send</button>
-	  	</div>
+      <div class="chat_interface">
+        <input type="text" name="user_input" id="user_txt">
+        <button id="send_msg" type="button">Send</button>
+      </div>
 
 
-  	</div>
+    </div>
 
   </div>
 
@@ -159,6 +150,7 @@
 	  })
 
 	  send_msg.onclick = __sendFunction;
+
   </script>
 
 </html>
