@@ -13,7 +13,6 @@
     left:0;
     top:0;
     background: linear-gradient(gray, black);
-    font-family: 'Open sans', sans-serif;
   }
    #chat{
     height:520px;
@@ -37,20 +36,24 @@
     font-size:24px;
   }
   #user_txt{
-    font-size: 32px;
-    color: #555;
+    font-size: 24px;
+    color: white;
     float:left;
     border-radius: 2px;
     border: solid #d2b48c;
     width:78%;
+    height:42px;
+    background-color:transparent;
   }
   #send_msg{
     width:21%;
     float:right;
-    height:54px;
+    height:42px;
     border-radius: 2px;
     border: solid #d2b48c;
-    background-color:white;
+    background-color:transparent;
+    color:white;
+    font-size:24px;
   }
   #send_msg:hover{
     background-color:#d2b48c;
@@ -69,8 +72,8 @@
   .msg_type_selector ul>li{
     display:inline;
     float:left;
-    height:46px;
-    font:24px;
+    height:42px;
+    font-size:24px;
   }
   .msg_type_selector ul>li>a{
     position: relative;
@@ -80,13 +83,20 @@
   padding: 6px 12px;
   line-height: 1;
   text-decoration: none;
-  background-color: #fff;
+  background-color: transparent;
   border: 2px solid #d2b48c;
-  font-size:32px;
+  font-size:24px;
   margin-right:6px;
+  color:white;
   }
-  .msg_type_selector ul>li>a:hover{
-    background-color:#d2b48c;
+  .msg_type_selector ul>li:hover:first-child a{
+    background-color:green;
+  }
+  .msg_type_selector ul>li:first-child + li:hover a{
+    background-color:red;
+  }
+  .msg_type_selector ul>li:hover:last-child a{
+    background-color:blue;
   }
   </style>
   <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
@@ -143,7 +153,9 @@
     };
     $("#user_txt").keyup(function(event){
       if(event.keyCode==13){
+        if(__ut.value){
         __sendFunction();
+        }
       }
     })
     send_msg.onclick = __sendFunction;
