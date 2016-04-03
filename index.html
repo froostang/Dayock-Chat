@@ -83,21 +83,22 @@
 
   </body>
 
+  <script src="/socket.io/socket.io.js"></script>
   <script>
+	  var socket = io();
+	  var send_msg = document.getElementById("send_msg");
+	  var __chat = document.getElementById("chat");
+	  var __ut = document.getElementById("user_txt");
 
-  var send_msg = document.getElementById("send_msg");
-  var __chat = document.getElementById("chat");
-  var __ut = document.getElementById("user_txt");
+	  var __sendFunction = function(){
+	  	var __m = document.createElement("li");
+	  	__m.innerHTML = __ut.value;
+	  	__chat.appendChild(__m);
+	  	socket.emit('chat message', __ut.value);
+	  	return false;
+	  };
 
-  var __sendFunction = function(){
-  	var __m = document.createElement("li");
-  	__m.innerHTML = __ut.value;
-  	__chat.appendChild(__m);
-  };
-
-  send_msg.onclick = __sendFunction;
-
-
+	  send_msg.onclick = __sendFunction;
   </script>
 
 </html>
