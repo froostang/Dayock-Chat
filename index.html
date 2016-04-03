@@ -6,44 +6,30 @@
   </head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <style>
-
-  html { 
-  background: url(http://images.mmorpg.com/images/screenshots/012003/inline/37.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-  .main {
-  	background: url(http://images.mmorpg.com/images/screenshots/012003/inline/37.jpg) no-repeat 50% 50% fixed; 
-  	background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	-webkit-background-size: cover;
-      font-family: "Arial Black", Gadget, sans-serif;
-
-/*
-    position:fixed;
-    width:100%;
+  body{
+     background-image: url(http://images.mmorpg.com/images/screenshots/012003/inline/37.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
     height:100%;
-    left:0;
-    top:0;
-    background: linear-gradient(gray, black);
-*/
+  }
+  .main{
+    font-family: "Arial Black", Gadget, sans-serif;
   }
    #chat{
     height:520px;
     background-color: black;
     opacity:0.6;
     filter:alpha(opacity=60);
-  display:block;
+    display:block;
     overflow: auto;
     list-style:none;
     padding-left:0px;
     border: solid #d2b48c;
-    border-radius: 2px;
+    border-radius: 4px;
     color: white;
-
   }
   #chat {
     transform: rotate(180deg);
@@ -58,21 +44,27 @@
     font-size: 24px;
     color: white;
     float:left;
-    border-radius: 2px;
+    border-radius: 4px;
     border: solid #d2b48c;
     width:78%;
     height:42px;
     background-color:transparent;
+        background-color: black;
+    opacity:0.6;
+
   }
   #send_msg{
     width:21%;
     float:right;
     height:42px;
-    border-radius: 2px;
+    border-radius: 4px;
     border: solid #d2b48c;
     background-color:transparent;
     color:white;
     font-size:24px;
+    border-radius: 4px;
+    background-color: black;
+    opacity:0.6;
   }
   #send_msg:hover{
     background-color:#d2b48c;
@@ -80,6 +72,17 @@
   .chat_interface{
     display:inline-block;
     width:100%;
+}
+
+  .type_border{
+    border: 2px solid #d2b48c;
+    width:340px;
+    height:42px;
+    margin-top:10px;
+    background-color: black;
+    opacity:0.6;
+    border-radius: 4px;
+
   }
   .msg_type_selector ul{
     display:inline-block;
@@ -93,30 +96,29 @@
     float:left;
     height:42px;
     font-size:24px;
+    padding-left:15px;
   }
   .msg_type_selector ul>li>a{
     position: relative;
-    border-radius: 2px;
-    left:0px;
-    top: 20px;
-  padding: 6px 12px;
-  line-height: 1;
-  text-decoration: none;
-  background-color: transparent;
-  border: 2px solid #d2b48c;
-  font-size:24px;
-  margin-right:6px;
-  color:white;
+    left:5px;
+    bottom:15px;
+    line-height: 1;
+    text-decoration: none;
+    background-color: transparent;
+    font-size:24px;
+    margin-right:6px;
+    color:white;
   }
   .msg_type_selector ul>li:hover:first-child a{
-    background-color:green;
+    color:coral;
   }
   .msg_type_selector ul>li:first-child + li:hover a{
-    background-color:red;
+    color:coral;
   }
   .msg_type_selector ul>li:hover:last-child a{
-    background-color:blue;
+    color:coral;
   }
+  
   </style>
   <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -127,22 +129,22 @@
   <div class="main">
 
     <div class="container text-center">
-      
+        <div class="type_border">
         <div class="msg_type_selector">
           <ul>
-            <li> <a href="#">Say</a> </li>
-            <li> <a href="#">Yell</a>  </li>
-            <li> <a href="#">Broadcast</a>  </li>
+            <li id="say"> <a id="say2" href="#">Say</a> </li>
+            <li id="yell"> <a id="yell2" href="#">Yell</a>  </li>
+            <li id="broadcast"> <a id="broadcast2" href="#">Broadcast</a>  </li>
           </ul>
         </div>
-
+      </div>
       <div class="__c">
         <ul id="chat">
         </ul>
       </div>
 
       <div class="chat_interface">
-        <input type="text" name="user_input" id="user_txt">
+        <input type="text" name="user_input" id="user_txt" autocomplete="off" >
         <button id="send_msg" type="button">Send</button>
       </div>
 
@@ -159,11 +161,51 @@
     var send_msg = document.getElementById("send_msg");
     var __chat = document.getElementById("chat");
     var __ut = document.getElementById("user_txt");
+    var saycolor = 0;
+
+    function changecolor(name, color){
+      var a = document.getElementById(name);
+      a.style.color = color;
+    }
+
+    say.onclick=function(){
+      saycolor = 1;
+        document.getElementById('user_txt').select();
+        changecolor("say2", "coral");
+        changecolor("yell2", "white");
+        changecolor("broadcast2", "white");
+    };
+    yell.onclick=function(){
+      saycolor = 2;
+        document.getElementById('user_txt').select();
+        changecolor("yell2", "coral")
+        changecolor("say2", "white");
+        changecolor("broadcast2", "white");
+    };
+      broadcast.onclick=function(){
+      saycolor = 3;
+        document.getElementById('user_txt').select();
+        changecolor("yell2", "white")
+        changecolor("say2", "white");
+        changecolor("broadcast2", "coral");
+    };
+
+
     var clearInput = function(){
       __ut.value = "";
     };
     var __sendFunction = function(){
       var __m = document.createElement("li");
+      if (saycolor == 1){
+        __m.style.color = "magenta";
+      };
+      if (saycolor == 2){
+        __m.style.color = "red";
+      };
+      if (saycolor == 3){
+        __m.style.color = "gray";
+      };
+
       __m.innerHTML = __ut.value;
       $("#chat").prepend(__m);
       socket.emit('chat message', { "TEXT": __ut.value } );
