@@ -28,6 +28,15 @@
     border: solid #d2b48c;
     border-radius: 2px;
   }
+  #chat {
+  	transform: rotate(180deg);
+
+  }
+  #chat > li{
+  	transform: rotate(-180deg);
+  	text-align:left;
+  	padding-left:4px;
+  }
 
   #user_txt{
   	font-size: 32px;
@@ -99,9 +108,9 @@
       
 	      <div class="msg_type_selector">
 	        <ul>
-	          <li> <a href="#">Say</a> </li>
-	          <li> <a href="#">Yell</a>  </li>
-	          <li> <a href="#">Broadcast</a>  </li>
+	          <li><a href="#">Say</a></li>
+	          <li><a href="#">Yell</a></li>
+	          <li><a href="#">Broadcast</a></li>
 	        </ul>
 	      </div>
 
@@ -136,7 +145,7 @@
 	  var __sendFunction = function(){
 	  	var __m = document.createElement("li");
 	  	__m.innerHTML = __ut.value;
-	  	__chat.appendChild(__m);
+	  	$("#chat").prepend(__m);
 	  	socket.emit('chat message', { "TEXT": __ut.value } );
 	  	clearInput();
 	  	return false;
