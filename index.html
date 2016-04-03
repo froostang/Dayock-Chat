@@ -7,39 +7,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <style>
 
-  html { 
-  background: url(http://images.mmorpg.com/images/screenshots/012003/inline/37.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-  .main {
-  	
-  	background: url(http://images.mmorpg.com/images/screenshots/012003/inline/37.jpg) no-repeat 50% 50% fixed; 
-  	background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	-webkit-background-size: cover;
-
-
-
-/*
-    position:fixed;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    background: linear-gradient(gray, black);
-*/
+  body{
+  	 background-image: url(http://images.mmorpg.com/images/screenshots/012003/inline/37.jpg);
+	  background-position: center center;
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+	  background-size: cover;
+	  background-color: #464646;
+	  height:100%;
   }
+
+  .main{
+
+  }
+
    #chat{
     height:520px;
     background-color: black;
-    opacity:0.6;
+    opacity:0.5;
     filter:alpha(opacity=60);
-  display:block;
+  	display:block;
     overflow: auto;
     list-style:none;
     padding-left:0px;
@@ -65,6 +52,7 @@
     width:78%;
     height:42px;
     background-color:transparent;
+    opacity:.5;
   }
   #send_msg{
     width:21%;
@@ -75,6 +63,7 @@
     background-color:transparent;
     color:white;
     font-size:24px;
+    opacity:.5;
   }
   #send_msg:hover{
     background-color:#d2b48c;
@@ -101,14 +90,14 @@
     border-radius: 2px;
     left:0px;
     top: 20px;
-  padding: 6px 12px;
-  line-height: 1;
-  text-decoration: none;
-  background-color: transparent;
-  border: 2px solid #d2b48c;
-  font-size:24px;
-  margin-right:6px;
-  color:white;
+	  padding: 6px 12px;
+	  line-height: 1;
+	  text-decoration: none;
+	  background-color: transparent;
+	  border: 2px solid #d2b48c;
+	  font-size:24px;
+	  margin-right:6px;
+	  color:white;
   }
   .msg_type_selector ul>li:hover:first-child a{
     background-color:green;
@@ -144,7 +133,7 @@
       </div>
 
       <div class="chat_interface">
-        <input type="text" name="user_input" id="user_txt">
+        <input type="text" name="user_input" id="user_txt" autocomplete="off" >
         <button id="send_msg" type="button">Send</button>
       </div>
 
