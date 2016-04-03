@@ -25,12 +25,33 @@
     overflow: auto;
     list-style:none;
     padding-left:0px;
-    border: solid #d9534f;
-    border-radius: 10px;
+    border: solid #d2b48c;
+    border-radius: 2px;
+  }
+
+  #user_txt{
+  	font-size: 32px;
+    color: #555;
+    float:left;
+    border-radius: 2px;
+    border: solid #d2b48c;
+    width:78%;
+  }
+
+  #send_msg{
+  	width:22%;
+  	height:54px;
+  	border-radius: 2px;
+    border: solid #d2b48c;
+    background-color:white;
+  }
+  #send_msg:hover{
+  	background-color:#d2b48c;
   }
 
   .chat_interface{
   	display:inline-block;
+  	width:100%;
   }
 
   .msg_type_selector ul{
@@ -38,26 +59,31 @@
   	padding-left: 0;
     margin: 20px 0;
     border-radius: 4px;
+    width:100%;
   }
 
   .msg_type_selector ul>li{
   	display:inline;
     float:left;
+    height:46px;
   }
 
   .msg_type_selector ul>li>a{
 	position: relative;
-    border-radius: 5px;
-	right: 350px;
+    border-radius: 2px;
+	left:0px;
     top: 20px;
 	padding: 6px 12px;
 	margin-left: -1px;
 	line-height: 1;
-	color: #d9534f;
 	text-decoration: none;
 	background-color: #fff;
-	border: 2px solid #d9534f;
-  }
+	border: 2px solid #d2b48c;
+	font-size:32px;
+	}
+	.msg_type_selector ul>li>a:hover{
+		background-color:#d2b48c;
+	}
 
 
   </style>
@@ -70,26 +96,24 @@
   <div class="main">
 
   	<div class="container text-center">
-      <div class="msg_type_selector">
-        <ul>
-          <li> <a href="#">Say</a> </li>
-          <li> <a href="#">Yell</a>  </li>
-          <li> <a href="#">Broadcast</a>  </li>
-        </ul>
-      </div>
+      
+	      <div class="msg_type_selector">
+	        <ul>
+	          <li> <a href="#">Say</a> </li>
+	          <li> <a href="#">Yell</a>  </li>
+	          <li> <a href="#">Broadcast</a>  </li>
+	        </ul>
+	      </div>
 
-      <form class="form-inline">
 	  	<div class="__c">
 		  	<ul id="chat">
 		  	</ul>
 	  	</div>
-        <div class="form-group has-error">
-		  	<input type="text" class="form-control" name="user_input" id="user_txt">
-		  	<button id="send_msg" type="button" class="btn btn-danger">Send</button>
-      </div>
-      </div>
-    </form>
 
+	    <div class="chat_interface">
+		  	<input type="text" name="user_input" id="user_txt">
+		  	<button id="send_msg" type="button">Send</button>
+	  	</div>
 
 
   	</div>
