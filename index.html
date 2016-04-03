@@ -118,6 +118,7 @@
   .msg_type_selector ul>li:hover:last-child a{
     color:coral;
   }
+
   
   </style>
   <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
@@ -157,6 +158,7 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
+
     var socket = io();
     var send_msg = document.getElementById("send_msg");
     var __chat = document.getElementById("chat");
@@ -194,32 +196,54 @@
     var clearInput = function(){
       __ut.value = "";
     };
-    var __sendFunction = function(){
+
+    var __sendFunction = function(msg){
       var __m = document.createElement("li");
-      if (saycolor == 1){
-        __m.style.color = "magenta";
-      };
-      if (saycolor == 2){
-        __m.style.color = "red";
-      };
-      if (saycolor == 3){
-        __m.style.color = "gray";
-      };
+
+      if(!msg){
+        if (saycolor == 1){
+          __m.style.color = "magenta";
+        }
+        if (saycolor == 2){
+          __m.style.color = "red";
+        }
+        if (saycolor == 3){
+          __m.style.color = "gray";
+        }
+      }
 
       __m.innerHTML = __ut.value;
-      $("#chat").prepend(__m);
-      socket.emit('chat message', { "TEXT": __ut.value } );
-      clearInput();
+
+      if(msg){
+        $("#chat").prepend(msg);
+      } else{
+        $("#chat").prepend(__m);
+        socket.emit('chat message', { "TEXT": __ut.value } );
+        clearInput();
+      }
       return false;
     };
+
+    send_msg.onclick = __sendFunction(null);
+
     $("#user_txt").keyup(function(event){
       if(event.keyCode==13){
         if(__ut.value){
         __sendFunction();
         }
       }
-    })
-    send_msg.onclick = __sendFunction;
+    });
+
+
+    socket.on('chat message', function(msg){
+      console.log(msg);
+        __sendFunction(msg.TEXT);
+    });
+
+    
+
+
+
   </script>
 
 </html>
