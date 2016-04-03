@@ -26,6 +26,16 @@
     border: solid #d2b48c;
     border-radius: 2px;
   }
+  #chat {
+  	transform: rotate(180deg);
+
+  }
+  #chat > li{
+  	transform: rotate(-180deg);
+  	text-align:left;
+  	padding-left:4px;
+  }
+
   #user_txt{
     font-size: 32px;
     color: #555;
@@ -59,6 +69,7 @@
     display:inline;
     float:left;
     height:46px;
+    font:24px;
   }
   .msg_type_selector ul>li>a{
   position: relative;
@@ -113,27 +124,32 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    var socket = io();
-    var send_msg = document.getElementById("send_msg");
-    var __chat = document.getElementById("chat");
-    var __ut = document.getElementById("user_txt");
-    var clearInput = function(){
-      __ut.value = "";
-    };
-    var __sendFunction = function(){
-      var __m = document.createElement("li");
-      __m.innerHTML = __ut.value;
-      __chat.appendChild(__m);
-      socket.emit('chat message', { "TEXT": __ut.value } );
-      clearInput();
-      return false;
-    };
-    $("#user_txt").keyup(function(event){
-      if(event.keyCode==13){
-        __sendFunction();
-      }
-    })
-    send_msg.onclick = __sendFunction;
+	  var socket = io();
+	  var send_msg = document.getElementById("send_msg");
+	  var __chat = document.getElementById("chat");
+	  var __ut = document.getElementById("user_txt");
+
+	  var clearInput = function(){
+	  	__ut.value = "";
+	  };
+
+	  var __sendFunction = function(){
+	  	var __m = document.createElement("li");
+	  	__m.innerHTML = __ut.value;
+	  	$("#chat").prepend(__m);
+	  	socket.emit('chat message', { "TEXT": __ut.value } );
+	  	clearInput();
+	  	return false;
+	  };
+
+	  $("#user_txt").keyup(function(event){
+	  	if(event.keyCode==13){
+	  		__sendFunction();
+	  	}
+	  })
+
+	  send_msg.onclick = __sendFunction;
+
   </script>
 
 </html>
