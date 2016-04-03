@@ -25,6 +25,8 @@
     overflow: auto;
     list-style:none;
     padding-left:0px;
+    border: solid #d9534f;
+    border-radius: 10px;
   }
 
   .chat_interface{
@@ -40,18 +42,21 @@
 
   .msg_type_selector ul>li{
   	display:inline;
+    float:left;
   }
 
   .msg_type_selector ul>li>a{
 	position: relative;
-	float: left;
+  border-radius: 5px;
+	right: 350px;
+  top: 20px;
 	padding: 6px 12px;
 	margin-left: -1px;
 	line-height: 1;
-	color: #337ab7;
+	color: #d9534f;
 	text-decoration: none;
 	background-color: #fff;
-	border: 1px solid #ddd;
+	border: 2px solid #d9534f;
   }
 
 
@@ -65,24 +70,28 @@
   <div class="main">
 
   	<div class="container text-center">
+      <div class="msg_type_selector">
+        <ul>
+          <li> <a href="#">Say</a> </li>
+          <li> <a href="#">Yell</a>  </li>
+          <li> <a href="#">Broadcast</a>  </li>
+        </ul>
+      </div>
 
+      <form class="form-inline">
 	  	<div class="__c">
 		  	<ul id="chat">
 		  	</ul>
 	  	</div>
+        <div class="form-group has-error">
+		  	<input type="text" class="form-control" name="user_input" id="user_txt">
+		  	<button id="send_msg" type="button" class="btn btn-danger">Send</button>
+      </div>
+      </div>
+    </form>
 
-	  	<div class="chat_interface">
-		  	<input type="text" name="user_input" id="user_txt">
-		  	<button id="send_msg" type="button">Send</button>
-	  	</div>
 
-	  	<div class="msg_type_selector">
-	  		<ul>
-	  			<li> <a href="#">Say</a> </li>
-	  			<li> <a href="#">Yell</a>  </li>
-	  			<li> <a href="#">Broadcast</a>  </li>
-	  		</ul>
-	  	</div>
+
   	</div>
 
   </div>
