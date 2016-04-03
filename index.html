@@ -160,7 +160,7 @@
   <script>
 
     var socket = io();
-    var send_msg = document.getElementById("send_msg");
+    var send_msg = $("#send_msg");
     var __chat = document.getElementById("chat");
     var __ut = document.getElementById("user_txt");
     var saycolor = 0;
@@ -180,14 +180,14 @@
     yell.onclick=function(){
       saycolor = 2;
         document.getElementById('user_txt').select();
-        changecolor("yell2", "coral")
+        changecolor("yell2", "coral");
         changecolor("say2", "white");
         changecolor("broadcast2", "white");
     };
       broadcast.onclick=function(){
       saycolor = 3;
         document.getElementById('user_txt').select();
-        changecolor("yell2", "white")
+        changecolor("yell2", "white");
         changecolor("say2", "white");
         changecolor("broadcast2", "coral");
     };
@@ -197,34 +197,30 @@
       __ut.value = "";
     };
 
-    var __sendFunction = function(msg){
-      var __m = document.createElement("li");
-
-      if(msg==null){
-        if (saycolor == 1){
-          __m.style.color = "magenta";
-        }
-        if (saycolor == 2){
-          __m.style.color = "red";
-        }
-        if (saycolor == 3){
-          __m.style.color = "gray";
-        }
+    var checkColor = function(__m){
+      if (saycolor == 1){
+        __m.style.color = "magenta";
       }
+      if (saycolor == 2){
+        __m.style.color = "red";
+      }
+      if (saycolor == 3){
+        __m.style.color = "gray";
+      }
+    }
 
+
+    var __sendFunction = function(){
+      var __m = document.createElement("li");
+      checkColor(__m);
       __m.innerHTML = __ut.value;
 
-      if(msg!=null){
-        $("#chat").prepend(msg);
-      } else{
-        $("#chat").prepend(__m);
-        socket.emit('chat message', { "TEXT": __ut.value } );
-        clearInput();
-      }
+      $("#chat").prepend(__m);
+      socket.emit('chat message', { "TEXT": __ut.value } );
+      clearInput();
+
       return false;
     };
-
-    send_msg.onclick = __sendFunction(null);
 
     $("#user_txt").keyup(function(event){
       if(event.keyCode==13){
@@ -236,8 +232,15 @@
 
 
     socket.on('chat message', function(msg){
-      console.log(msg);
-        __sendFunction(msg.TEXT);
+      var __m = document.createElement("li");
+      __m.innerHTML = msg;
+      $("#chat").prepend(__m);
+    });
+
+    $(document).ready(function() {
+      $("#send_msg").click(function(){
+          __sendFunction();
+      }); 
     });
 
     
