@@ -13,13 +13,12 @@
     left:0;
     top:0;
     background: linear-gradient(gray, black);
-    font-family: "Arial", Times, Sans-serif;
   }
    #chat{
     height:520px;
     background-color: #ffffff;
-  opacity:0.6;
-  filter:alpha(opacity=60);
+    opacity:0.6;
+    filter:alpha(opacity=60);
   display:block;
     overflow: auto;
     list-style:none;
@@ -28,15 +27,14 @@
     border-radius: 2px;
   }
   #chat {
-  	transform: rotate(180deg);
-
+    transform: rotate(180deg);
   }
   #chat > li{
-  	transform: rotate(-180deg);
-  	text-align:left;
-  	padding-left:4px;
+    transform: rotate(-180deg);
+    text-align:left;
+    padding-left:4px;
+    font-size:24px;
   }
-
   #user_txt{
     font-size: 32px;
     color: #555;
@@ -46,7 +44,8 @@
     width:78%;
   }
   #send_msg{
-    width:22%;
+    width:21%;
+    float:right;
     height:54px;
     border-radius: 2px;
     border: solid #d2b48c;
@@ -73,17 +72,17 @@
     font:24px;
   }
   .msg_type_selector ul>li>a{
-  position: relative;
+    position: relative;
     border-radius: 2px;
-  left:0px;
+    left:0px;
     top: 20px;
   padding: 6px 12px;
-  margin-left: -1px;
   line-height: 1;
-  color: white;
-  font-weight: bold;
+  text-decoration: none;
+  background-color: #fff;
   border: 2px solid #d2b48c;
   font-size:32px;
+  margin-right:6px;
   }
   .msg_type_selector ul>li>a:hover{
     background-color:#d2b48c;
@@ -126,32 +125,27 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-	  var socket = io();
-	  var send_msg = document.getElementById("send_msg");
-	  var __chat = document.getElementById("chat");
-	  var __ut = document.getElementById("user_txt");
-
-	  var clearInput = function(){
-	  	__ut.value = "";
-	  };
-
-	  var __sendFunction = function(){
-	  	var __m = document.createElement("li");
-	  	__m.innerHTML = __ut.value;
-	  	$("#chat").prepend(__m);
-	  	socket.emit('chat message', { "TEXT": __ut.value } );
-	  	clearInput();
-	  	return false;
-	  };
-
-	  $("#user_txt").keyup(function(event){
-	  	if(event.keyCode==13){
-	  		__sendFunction();
-	  	}
-	  })
-
-	  send_msg.onclick = __sendFunction;
-
+    var socket = io();
+    var send_msg = document.getElementById("send_msg");
+    var __chat = document.getElementById("chat");
+    var __ut = document.getElementById("user_txt");
+    var clearInput = function(){
+      __ut.value = "";
+    };
+    var __sendFunction = function(){
+      var __m = document.createElement("li");
+      __m.innerHTML = __ut.value;
+      $("#chat").prepend(__m);
+      socket.emit('chat message', { "TEXT": __ut.value } );
+      clearInput();
+      return false;
+    };
+    $("#user_txt").keyup(function(event){
+      if(event.keyCode==13){
+        __sendFunction();
+      }
+    })
+    send_msg.onclick = __sendFunction;
   </script>
 
 </html>
